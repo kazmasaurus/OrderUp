@@ -14,6 +14,8 @@ typealias Store = ReSwift.Store<AppState>
 struct AppState {
 
     var menu: Menu?
+
+    var items: [Menu.Item] { return menu?.items ?? [] }
 }
 
 extension AppState: StateType {

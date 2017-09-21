@@ -26,6 +26,7 @@ struct Menu {
     }
 }
 
+// If I was more comfortable with it, I would have prefered to use Swift 4's new `Decodable`
 extension Menu: Mappable {
     init(map: Mapper) throws {
         items = try map.from("menu")
@@ -35,6 +36,13 @@ extension Menu: Mappable {
 extension Menu.Item: Mappable {
     init(map: Mapper) throws {
         name = try map.from("item")
-        options = []
+        options = try map.from("options")
+    }
+}
+
+extension Menu.Option: Mappable {
+    init(map: Mapper) throws {
+        size = try map.from("size")
+        price = try map.from("price")
     }
 }
