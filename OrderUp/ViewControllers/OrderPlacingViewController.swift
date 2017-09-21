@@ -13,7 +13,14 @@ class OrderPlacingViewController: UIViewController {
 
     var store: Store!
 
-    var viewModel: ViewModel = []
+    var viewModel: ViewModel = [] {
+        didSet {
+            guard viewModel != oldValue else { return }
+            menuTableView.reloadData()
+        }
+    }
+
+    @IBOutlet weak var menuTableView: UITableView!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -22,6 +29,7 @@ class OrderPlacingViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         store.unsubscribe(self)
+        super.viewWillDisappear(animated)
     }
 }
 
@@ -29,13 +37,29 @@ extension OrderPlacingViewController: StoreSubscriber {
 
     func newState(state: AppState) {
         print(#file, #function, state)
-        print(OrderPlacingViewController.viewModel(from: state))
+        self.viewModel = OrderPlacingViewController.viewModel(from: state)
     }
 }
 
-//extension OrderPlacingViewController:
+extension OrderPlacingViewController: UITableViewDataSource {
 
+    func numberOfSections(in tableView: UITableView) -> Int { return 1 }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cellModel = viewModel[indexPath.item]
+        cell.textLabel?.text = cellModel.itemName
+        cell.detailTextLabel?.text = cellModel.option.size
+
+        return cell
+    }
+}
+
+extension OrderPlacingViewController: UITableViewDelegate {}
 
 extension OrderPlacingViewController {
     typealias ViewModel = [Cell]
@@ -52,5 +76,11 @@ extension OrderPlacingViewController {
     }
 }
 
+extension OrderPlacingViewController.Cell: Equatable {
+    static func ==(lhs: OrderPlacingViewController.Cell, rhs: OrderPlacingViewController.Cell) -> Bool {
+        return lhs.itemName == rhs.itemName
+            && lhs.option == rhs.option
+    }
+}
 
 

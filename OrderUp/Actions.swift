@@ -42,7 +42,8 @@ func fetchMenu() -> Store.ActionCreator {
                 }
             }()
 
-            store.dispatch(fetchResponse)
+            // Since URLSession doesn't run callbacks on main.
+            DispatchQueue.main.async { store.dispatch(fetchResponse) }
         }.resume()
 
         return nil

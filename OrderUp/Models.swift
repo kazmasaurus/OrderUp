@@ -46,3 +46,18 @@ extension Menu.Option: Mappable {
         price = try map.from("price")
     }
 }
+
+extension Menu.Item: Equatable {
+    static func ==(lhs: Menu.Item, rhs: Menu.Item) -> Bool {
+        return lhs.name == rhs.name
+            && lhs.options == rhs.options
+    }
+}
+
+extension Menu.Option: Equatable {
+    static func == (lhs: Menu.Option, rhs: Menu.Option) -> Bool {
+        return lhs.price == rhs.price
+            && lhs.size == rhs.size
+    }
+}
+
