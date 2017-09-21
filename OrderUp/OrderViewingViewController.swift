@@ -7,8 +7,25 @@
 //
 
 import UIKit
+import ReSwift
 
 class OrderViewingViewController: UIViewController {
 
+    var store: Store!
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        store.subscribe(self)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        store.unsubscribe(self)
+    }
 }
 
+extension OrderViewingViewController: StoreSubscriber {
+
+    func newState(state: AppState) {
+        print(#file, #function, state)
+    }
+}
