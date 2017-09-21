@@ -17,6 +17,7 @@
 		310BB3A31F744DA800D8DE0A /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 310BB3A11F744DA800D8DE0A /* ReSwift.framework */; };
 		310BB3A61F7450CD00D8DE0A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BB3A51F7450CD00D8DE0A /* AppState.swift */; };
 		310BB3A81F7453E900D8DE0A /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BB3A71F7453E900D8DE0A /* Actions.swift */; };
+		310BB3AA1F745B7600D8DE0A /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BB3A91F745B7600D8DE0A /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		310BB3A11F744DA800D8DE0A /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = Carthage/Build/iOS/ReSwift.framework; sourceTree = "<group>"; };
 		310BB3A51F7450CD00D8DE0A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		310BB3A71F7453E900D8DE0A /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
+		310BB3A91F745B7600D8DE0A /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,11 +69,11 @@
 		310BB38A1F744C0A00D8DE0A /* OrderUp */ = {
 			isa = PBXGroup;
 			children = (
-				310BB38B1F744C0A00D8DE0A /* AppDelegate.swift */,
 				310BB3A71F7453E900D8DE0A /* Actions.swift */,
+				310BB38B1F744C0A00D8DE0A /* AppDelegate.swift */,
 				310BB3A51F7450CD00D8DE0A /* AppState.swift */,
-				310BB38D1F744C0A00D8DE0A /* OrderPlacingViewController.swift */,
-				310BB38F1F744C0A00D8DE0A /* OrderViewingViewController.swift */,
+				310BB3A91F745B7600D8DE0A /* Models.swift */,
+				310BB3AB1F745B7F00D8DE0A /* ViewControllers */,
 				310BB3911F744C0A00D8DE0A /* Main.storyboard */,
 				310BB3941F744C0A00D8DE0A /* Assets.xcassets */,
 				310BB3961F744C0A00D8DE0A /* LaunchScreen.storyboard */,
@@ -87,6 +89,15 @@
 				310BB3A11F744DA800D8DE0A /* ReSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		310BB3AB1F745B7F00D8DE0A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				310BB38D1F744C0A00D8DE0A /* OrderPlacingViewController.swift */,
+				310BB38F1F744C0A00D8DE0A /* OrderViewingViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +197,7 @@
 				310BB3A81F7453E900D8DE0A /* Actions.swift in Sources */,
 				310BB3901F744C0A00D8DE0A /* OrderViewingViewController.swift in Sources */,
 				310BB38C1F744C0A00D8DE0A /* AppDelegate.swift in Sources */,
+				310BB3AA1F745B7600D8DE0A /* Models.swift in Sources */,
 				310BB38E1F744C0A00D8DE0A /* OrderPlacingViewController.swift in Sources */,
 				310BB3A61F7450CD00D8DE0A /* AppState.swift in Sources */,
 			);
