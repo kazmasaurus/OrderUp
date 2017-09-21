@@ -13,7 +13,7 @@ typealias Store = ReSwift.Store<AppState>
 
 struct AppState {
 
-    var data: Data?
+    var menu: Menu?
 }
 
 extension AppState: StateType {
@@ -22,7 +22,7 @@ extension AppState: StateType {
 
         switch action {
         case FetchMenu.requesting: break // TODO: set state to loading
-        case FetchMenu.response(.success(let data)): state.data = data
+        case FetchMenu.response(.success(let menu)): state.menu = menu
         case FetchMenu.response(.failure): break // TODO: Set state to error
         default: break
         }

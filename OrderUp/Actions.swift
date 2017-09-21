@@ -8,6 +8,7 @@
 
 import Foundation
 import ReSwift
+import Mapper
 
 func fetchMenu() -> Store.ActionCreator {
     return { state, store in
@@ -19,8 +20,24 @@ func fetchMenu() -> Store.ActionCreator {
 
             let fetchResponse: FetchMenu = {
                 switch (data, error) {
-                case (let data?, _): return .response(.success(data))
-                case (_, let error?): return .response(.failure(error))
+                case (let data?, _):
+                    // TODO: I pretty agressively hate this, but it gets the job done.
+                    // I would probably lean into antitypical/Result to clean it up.
+
+                    guard
+                        let json = try? JSONSerialization.jsonObject(with: data, options: []),
+                        let dict = json as? NSDictionary
+                    else { return .response(.failure(JSONError())) }
+
+                    do {
+                        let menu = try Menu(map: Mapper(JSON: dict))
+                        return .response(.success(menu))
+                    }
+                    catch { return .response(.failure(error)) }
+
+                case (_, let error?):
+                    return .response(.failure(error))
+
                 default: fatalError()
                 }
             }()
@@ -32,9 +49,11 @@ func fetchMenu() -> Store.ActionCreator {
     }
 }
 
+struct JSONError: Error {}
+
 enum FetchMenu: Action {
     case requesting
-    case response(Result<Data>)
+    case response(Result<Menu>)
 }
 
 enum Result<Element> {
