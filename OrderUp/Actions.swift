@@ -18,32 +18,32 @@ func fetchMenu() -> Store.ActionCreator {
         let menuURL = URL(string: "https://mobile-dev-code-project.s3-us-west-2.amazonaws.com/project.json")!
         URLSession.shared.dataTask(with: menuURL) { data, response, error in
 
-            let fetchResponse: FetchMenu = {
+            let fetchResponse: Result<Menu> = {
                 switch (data, error) {
                 case (let data?, _):
-                    // TODO: I pretty agressively hate this, but it gets the job done.
+                    // TODO: I pretty agressively hate how this flows, but it gets the job done.
                     // I would probably lean into antitypical/Result to clean it up.
 
                     guard
                         let json = try? JSONSerialization.jsonObject(with: data, options: []),
                         let dict = json as? NSDictionary
-                    else { return .response(.failure(JSONError())) }
+                    else { return .failure(JSONError()) }
 
                     do {
                         let menu = try Menu(map: Mapper(JSON: dict))
-                        return .response(.success(menu))
+                        return .success(menu)
                     }
-                    catch { return .response(.failure(error)) }
+                    catch { return .failure(error) }
 
                 case (_, let error?):
-                    return .response(.failure(error))
+                    return .failure(error)
 
                 default: fatalError()
                 }
             }()
 
             // Since URLSession doesn't run callbacks on main.
-            DispatchQueue.main.async { store.dispatch(fetchResponse) }
+            DispatchQueue.main.async { store.dispatch(FetchMenu.response(fetchResponse)) }
         }.resume()
 
         return nil
