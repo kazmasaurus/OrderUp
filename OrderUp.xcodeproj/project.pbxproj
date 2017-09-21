@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		310BB38C1F744C0A00D8DE0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BB38B1F744C0A00D8DE0A /* AppDelegate.swift */; };
 		310BB38E1F744C0A00D8DE0A /* OrderPlacingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BB38D1F744C0A00D8DE0A /* OrderPlacingViewController.swift */; };
-		310BB3901F744C0A00D8DE0A /* OrderViewingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BB38F1F744C0A00D8DE0A /* OrderViewingViewController.swift */; };
+		310BB3901F744C0A00D8DE0A /* PlacedOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310BB38F1F744C0A00D8DE0A /* PlacedOrdersViewController.swift */; };
 		310BB3931F744C0A00D8DE0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 310BB3911F744C0A00D8DE0A /* Main.storyboard */; };
 		310BB3951F744C0A00D8DE0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 310BB3941F744C0A00D8DE0A /* Assets.xcassets */; };
 		310BB3981F744C0A00D8DE0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 310BB3961F744C0A00D8DE0A /* LaunchScreen.storyboard */; };
@@ -24,7 +24,7 @@
 		310BB3881F744C0A00D8DE0A /* OrderUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrderUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		310BB38B1F744C0A00D8DE0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		310BB38D1F744C0A00D8DE0A /* OrderPlacingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPlacingViewController.swift; sourceTree = "<group>"; };
-		310BB38F1F744C0A00D8DE0A /* OrderViewingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewingViewController.swift; sourceTree = "<group>"; };
+		310BB38F1F744C0A00D8DE0A /* PlacedOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacedOrdersViewController.swift; sourceTree = "<group>"; };
 		310BB3921F744C0A00D8DE0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		310BB3941F744C0A00D8DE0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		310BB3971F744C0A00D8DE0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				310BB38D1F744C0A00D8DE0A /* OrderPlacingViewController.swift */,
-				310BB38F1F744C0A00D8DE0A /* OrderViewingViewController.swift */,
+				310BB38F1F744C0A00D8DE0A /* PlacedOrdersViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -195,7 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				310BB3A81F7453E900D8DE0A /* Actions.swift in Sources */,
-				310BB3901F744C0A00D8DE0A /* OrderViewingViewController.swift in Sources */,
+				310BB3901F744C0A00D8DE0A /* PlacedOrdersViewController.swift in Sources */,
 				310BB38C1F744C0A00D8DE0A /* AppDelegate.swift in Sources */,
 				310BB3AA1F745B7600D8DE0A /* Models.swift in Sources */,
 				310BB38E1F744C0A00D8DE0A /* OrderPlacingViewController.swift in Sources */,

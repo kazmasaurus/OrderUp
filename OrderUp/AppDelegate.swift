@@ -21,8 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return tabBarViewController.viewControllers?[0] as? OrderPlacingViewController
     }
 
-    var orderViewingViewController: OrderViewingViewController! {
-        return tabBarViewController.viewControllers?[1] as? OrderViewingViewController
+    // I just realized that we don't actually need a way to view _placed_ orders
+    // which was the main reason I had this guy.
+    var placedOrdersViewController: PlacedOrdersViewController! {
+        return tabBarViewController.viewControllers?[1] as? PlacedOrdersViewController
     }
 
     var tabBarViewController: UITabBarController! {
@@ -32,8 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        orderViewingViewController.store = store
         orderPlacingViewController.store = store
+        placedOrdersViewController.store = store
 
         store.dispatch(fetchMenu())
 

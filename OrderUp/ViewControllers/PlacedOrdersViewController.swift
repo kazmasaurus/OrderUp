@@ -9,7 +9,7 @@
 import UIKit
 import ReSwift
 
-class OrderViewingViewController: UIViewController {
+class PlacedOrdersViewController: UIViewController {
 
     var store: Store!
 
@@ -23,7 +23,7 @@ class OrderViewingViewController: UIViewController {
     }
 }
 
-extension OrderViewingViewController: StoreSubscriber {
+extension PlacedOrdersViewController: StoreSubscriber {
 
     func newState(state: AppState) {
         print(#file, #function, state)
