@@ -52,7 +52,7 @@ extension OrderPlacingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let cellModel = viewModel[indexPath.item]
-        cell.textLabel?.text = cellModel.item
+        cell.textLabel?.text = cellModel.description
         cell.detailTextLabel?.text = cellModel.price
 
         return cell
@@ -65,8 +65,9 @@ extension OrderPlacingViewController {
     typealias ViewModel = [Cell]
 
     struct Cell {
-        let item: String
+        let description: String
         let price: String
+        let item: Menu.Item
     }
 
     static let priceFormatter: NumberFormatter = {
@@ -76,19 +77,20 @@ extension OrderPlacingViewController {
     }()
 
     static func viewModel(from state: AppState) -> ViewModel {
-        return state.items.flatMap { item in
-            return item.options.map {
-                let price = priceFormatter.string(from: NSNumber(value: $0.price)) ?? "??"
-                return Cell(item: item.name + " (\($0.size))", price: price)
-            }
+        return state.items.map { item in
+            return Cell(
+                description: item.name + " (\(item.size))",
+                price: priceFormatter.string(from: NSNumber(value: item.price)) ?? "??",
+                item: item)
         }
     }
 }
 
 extension OrderPlacingViewController.Cell: Equatable {
     static func ==(lhs: OrderPlacingViewController.Cell, rhs: OrderPlacingViewController.Cell) -> Bool {
-        return lhs.item == rhs.item
+        return lhs.description == rhs.description
             && lhs.price == rhs.price
+            && lhs.item == rhs.item
     }
 }
 
